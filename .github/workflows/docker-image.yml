@@ -20,7 +20,7 @@ jobs:
           build-type: "standard"
 
       - name: Upload Build Artifacts
-        uses: actions/upload-artifact@3
+        uses: actions/upload-artifact@4
         with:
           name: build
           path: out/examples/lighting-app
