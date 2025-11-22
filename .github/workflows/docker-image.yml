@@ -1,0 +1,26 @@
+name: Build Matter Example
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Build Matter Example
+        uses: ./ # Uses an action in the root directory
+        with:
+          example-app: "lighting-app"
+          path-to-example-app: "./path/to/lighting-app"
+          json-file-path: "./path/to/json.json"
+          build-script: "./path/to/build_script.sh"
+          output-directory: "./path/to/output"
+          build-type: "standard"
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: out/examples/lighting-app
